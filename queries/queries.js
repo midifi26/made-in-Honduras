@@ -11,7 +11,7 @@ const queries = {
          e.address
   FROM products AS a
   INNER JOIN providers AS e ON a.id_provider = e.id_provider
-  WHERE a.price::text LIKE $1`,
+  WHERE price::text LIKE '%' || $1 || '%'`
 
 }
 module.exports = queries;
