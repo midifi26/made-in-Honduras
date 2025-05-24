@@ -1,6 +1,6 @@
 const queries = {
     getAllProducts:`SELECT * FROM PRODUCTS`,
-    getProductByPrice:`
+    getProductByPrices:`
   SELECT a.id_product,
          a.name,
          a.relevance,

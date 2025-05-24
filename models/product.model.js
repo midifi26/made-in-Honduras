@@ -18,11 +18,11 @@ const getAllProducts = async () => {
     return result
 }
 
-const getProductByPrice = async (price) => {
+const getProductByPrices = async (price) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.getProductByPrice, [price])
+        const data = await client.query(queries.getProductByPrices, [price])
         result = data.rows
         
     } catch (err) {
@@ -36,7 +36,7 @@ const getProductByPrice = async (price) => {
 
 const product = {
     getAllProducts,
-    getProductByPrice
+    getProductByPrices
 }
 
 module.exports = product;
