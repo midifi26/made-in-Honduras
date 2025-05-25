@@ -1,37 +1,36 @@
-const productModel= require("../models/product.model.js");
+const productModel = require("../models/product.model.js");
+const { validateSortField, validateSortOrder } = require('../utils/validate.js');
 
 const getProduct = async (req, res) => {
-  const { name, price } = req.query;
   try {
-    let product;
+    const { name, price, name_provider, sortField, sortOrder } = req.query;
+    console.log('Parámetros recibidos:', { name, price, sortField, sortOrder });
+
+    const validField = validateSortField(sortField);
+    const validOrder = validateSortOrder(sortOrder);
+    console.log('Parámetros validados:', { validField, validOrder });
+
+    let products;
+
     if (name) {
-      product = await productModel.getAllProducts(name);
-    } else if (price){
-      product = await productModel.getProductByPrices(price);
-    }else{
-        product = await productModel.getAllProducts()
+      products = await productModel.getProductByName(name, validField, validOrder);
+    } else if (price) {
+      products = await productModel.getProductByPrices(price, validField, validOrder);
+    } else if (name_provider) {
+      products = await productModel.getProductByProvider(name_provider, validField, validOrder);
+    }else {
+      products = await productModel.getAllProducts(validField, validOrder);
     }
-    res.status(200).json(product); // [] con las entries encontradas
+    console.log('Productos obtenidos:', products);
+    res.status(200).json(products);
   } catch (error) {
-    res.status(500).json({ error: "Error en la BBDD" });
+    console.error('Error en getProduct:', error);
+    res.status(500).json({ error: error.message });
   }
 };
 
-// const getProductByPrices = async (req, res) => {
-//     let price= req.params.price;
-//   try {
-//     if (price) {
-//       product = await productModel.getProductByPrices(req.params.price);
-//     } else {
-//       product = await productModel.getAllProducts();
-//     }
-//     res.status(200).json(product); // [] con las entries encontradas
-//   } catch (error) {
-//     res.status(500).json({ error: "Error en la BBDD" });
-//   }
-// };
 
 module.exports = {
-    getProduct,
-    //getProductByPrices
-}
+  getProduct
+};
+

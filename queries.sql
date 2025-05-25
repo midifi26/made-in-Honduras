@@ -14,6 +14,8 @@ CREATE TABLE products (
   id_provider INTEGER,
   FOREIGN KEY (id_provider) REFERENCES providers(id_provider)
 );
+--Desabilita las tildes
+CREATE EXTENSION IF NOT EXISTS unaccent;
 
 INSERT INTO providers(name_provider, cif, address) VALUES
 ('TAJADAS ALEJANDRA', 'A8965298I', 'Villa Argentina, El Porvenir, Atlantida'),
@@ -29,7 +31,18 @@ INSERT INTO products(name, relevance, price, image, id_provider) VALUES
 ('Bolsa Reutilizable Eco', 2, 5.99, 'bolsa_eco.jpg', 5);
 
 --Todos los productos
-SELECT * FROM productos;
+SELECT a.id_product,
+       a.name,
+       a.relevance,
+       a.price,
+       a.image,
+       a.id_provider,
+       e.name_provider,
+       e.cif,
+       e.address
+FROM products AS a
+JOIN providers AS e ON a.id_provider = e.id_provider
+
 
 --Producto por precio
 SELECT a.id_product,
