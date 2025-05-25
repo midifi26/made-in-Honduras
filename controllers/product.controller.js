@@ -3,7 +3,7 @@ const { validateSortField, validateSortOrder } = require('../utils/validate.js')
 
 const getProduct = async (req, res) => {
   try {
-    const { name, price, sortField, sortOrder } = req.query;
+    const { name, price, name_provider, sortField, sortOrder } = req.query;
     console.log('Parámetros recibidos:', { name, price, sortField, sortOrder });
 
     const validField = validateSortField(sortField);
@@ -16,7 +16,9 @@ const getProduct = async (req, res) => {
       products = await productModel.getProductByName(name, validField, validOrder);
     } else if (price) {
       products = await productModel.getProductByPrices(price, validField, validOrder);
-    } else {
+    } else if (name_provider) {
+      products = await productModel.getProductByProvider(name_provider, validField, validOrder);
+    }else {
       products = await productModel.getAllProducts(validField, validOrder);
     }
     console.log('Productos obtenidos:', products);
