@@ -4,6 +4,7 @@ import SortButtons from './SortButtons'
 import ProductItem from './ProductItem'
 import Search from './Search'
 
+
 const ProductList = () => {
     
     const [search, setSearch] = useState("")
@@ -28,7 +29,9 @@ const ProductList = () => {
             try {
                 const resp = await fetch(`http://localhost:3000/api/product?${queryParams}&sortField=${order.field}&sortOrder=${order.direction}`);
                 const data = await resp.json();
-                setProducts(data);
+                //setProducts(data);
+                setProducts(Array.isArray(data) ? data : []);
+
             } catch (error) {
               console.error(error);
             }
@@ -45,15 +48,6 @@ const ProductList = () => {
         return {field, direction : newOrder};
     });   
     };
-
-    // const searchProduct = products.filter(product => {
-    //     const term = search.toLowerCase();
-    //     return (
-    //         product.name.toLowerCase().includes(term) ||
-    //         product.name_provider.toLowerCase().includes(term) ||
-    //         product.price.toString().includes(term)
-    //     );
-    // });
     
   return (
     <div>
@@ -67,4 +61,4 @@ const ProductList = () => {
   )
 }
 
-export default ProductList
+export default ProductList;
