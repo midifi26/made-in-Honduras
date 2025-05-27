@@ -19,6 +19,7 @@ const Search = ({ onSearch }) => {
     setInputValue(e.target.value);
   };
 
+  
   return (
     <div>
       <input

@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Honduran Products API",
+    "version": "1.0.0",
+    "description": "Simple API to get Honduran products"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/product": {
+      "get": {
+        "summary": "Get products",
+        "description": "Get all products or filter by name, price, or provider",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by product name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "description": "Filter by price (number as string)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name_provider",
+            "in": "query",
+            "description": "Filter by provider name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Sort by 'name', 'price' or 'relevance'",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort direction: 'asc' or 'desc'",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id_product": { "type": "integer" },
+          "name": { "type": "string" },
+          "price": { "type": "number" },
+          "relevance": { "type": "integer" },
+          "image": { "type": "string" },
+          "name_provider": { "type": "string" },
+          "cif": { "type": "string" },
+          "address": { "type": "string" }
+        }
+      }
+    }
+  }
+}
