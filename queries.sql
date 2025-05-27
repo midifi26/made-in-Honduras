@@ -17,12 +17,6 @@ CREATE TABLE products (
 --Desabilita las tildes
 CREATE EXTENSION IF NOT EXISTS unaccent;
 
-INSERT INTO providers(name_provider, cif, address) VALUES
-('TAJADAS ALEJANDRA', 'A8965298I', 'Villa Argentina, El Porvenir, Atlantida'),
-('Café de Honduras S.A.', 'B12345678', 'Colonia Palmira, Tegucigalpa'),
-('Textiles La Ceiba', 'C87654321', 'Barrio La Isla, La Ceiba'),
-('Miel Orgánica Ltda.', 'D23456789', 'Valle de Amarateca, Francisco Morazán'),
-('Plásticos Eco', 'E98765432', 'Zona Industrial, San Pedro Sula');
 
 INSERT INTO providers(name_provider, cif, address) VALUES
 ('Campofresco', 'B12962678', 'Carretera a Tegucigalpa, Zona Industrial, San Pedro Sula'),
@@ -30,6 +24,11 @@ INSERT INTO providers(name_provider, cif, address) VALUES
 ('Productos Diana', 'Q1296329', 'Zona Industrial, San Salvador'),
 ('Yummies', 'N1289629', 'Bulevar del Norte, San Pedro Sula'),
 ('Schilos', 'M1296375', 'Centro Comercial Los Proceres, Tegucigalpa');
+
+INSERT INTO providers (name_provider, cif, address) VALUES
+('Issima', 'k92038475', 'Avenida San Isidro, Tegucigalpa, Honduras'),
+('Don Ramon', 'H83492017', 'Calle Principal #12, Barrio El Centro, San Pedro Sula, Honduras'),
+('Gold Star', 'M74829105', 'Boulevard Morazán, Colonia Palmira, Tegucigalpa, Honduras');
 
 
 INSERT INTO products(name, relevance, price, image, id_provider) VALUES
@@ -49,6 +48,22 @@ INSERT INTO products(name, relevance, price, image, id_provider) VALUES
 ('TAJADA.PLATA.CHILE-LIM.ZAMBOS YUMM.155 GR', 4.7, 3.95, 'https://mundofoods.com/15216363-large_default/zambos-honduras-chile-limon-yummies-155-gr.jpg', 9),
 ('YUQUITAS CHIPS YUC.ZAMBOS YUMMIES 140 GR', 4.2, 3.95, 'https://mundofoods.com/15216368-large_default/zambos-yuquitas-yummies-140-gr.jpg', 9),
 ('RANCHITAS PICANTES.QUESO YUMMIES 150 GR', 4.6, 3.20, 'https://mundofoods.com/15216367-large_default/ranchitas-nacho-yummies-150-gr.jpg', 9);
+
+INSERT INTO products(name, relevance, price, image, id_provider) VALUES
+('Café Molido Hondureño Oro', 4.6, 6.20, 'https://mundofoods.com/15222880-home_default/cafe-oro-honduras-453-gr.jpg', 11),
+('Salsa chile Extra', 4, 3.20, 'https://mundofoods.com/15222927-home_default/salsa-chile-picante-schilos-153-ml.jpg', 10),
+('Salsa de Ajo y Perejil', 4.5, 3.75, 'https://mundofoods.com/15223139-home_default/salsa-de-ajo-perejil-don-ramon-330-ml.jpg', 12),
+('Salsa de Tomate Ranchera', 4.2, 1.40, 'https://mundofoods.com/15223140-home_default/pica-pica-honduras-don-ramon-425-gr.jpg', 12),
+('Sardinas Pica Pica', 3.9, 2.95, 'https://mundofoods.com/15217084-home_default/comprar-harina-maseca-2-kg.jpg', 13),
+('Carammelos de Leche', 4.6, 2.85, 'https://mundofoods.com/15223607-home_default/caramelos-de-leche-diana-154-gr.jpg', 8),
+('Chicle de Cereza Bubbaloo', 4.1, 0.20, 'https://mundofoods.com/15223843-home_default/chicle-de-cereza-bubbaloo-5-gr.jpg', 8),
+('Achiote Molido', 4.1, 1.75, 'https://mundofoods.com/15223138-home_default/achiote-molido-onoto-don-ramon-70-gr.jpg', 12),
+('Elotitos con Piquete', 4.6, 3.40, 'https://mundofoods.com/15223609-home_default/elotitos-con-piquete-diana-170-gr.jpg', 8),
+('Elotitos con Limón', 4.6, 1.95, 'https://mundofoods.com/15223608-home_default/elotitos-con-limon-diana-183-gr.jpg', 8),
+('Encurtido Lago de Yojoa', 4, 5.75, 'https://mundofoods.com/15223729-home_default/encurtido-hondureno-naturas-1-kg.jpg', 7),
+('Fideos Chop Suey', 3.20, 1.85, 'https://mundofoods.com/15223142-home_default/fideos-chop-suey-don-ramon-227-gr.jpg', 12),
+('Harina de Trigo Fortificada', 4.3, 3.40, 'https://walmarthn.vtexassets.com/arquivos/ids/271647/Harina-La-Rosa-De-Trigo-2-268-Kg-1-8961.jpg?v=638059485944630000', 13),
+('Harina de Trigo', 4.7, 3.95, 'https://walmarthn.vtexassets.com/arquivos/ids/172014/Harinas-Gold-Star-Para-Baleadas-2270Gr-1-8825.jpg?v=637666371368230000', 13);
 
 INSERT INTO products(name, relevance, price, image, id_provider) VALUES
 ('Café Supremo', 4, 12.50, 'cafe_supremo.jpg', 2),

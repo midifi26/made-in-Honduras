@@ -50,8 +50,14 @@ const { validateSortField, validateSortOrder } = require('../utils/validate.js')
     } else {
       products = await productModel.getAllProducts(validField, validOrder, offset, limitNumber);
     }
+    const totalPages = Math.ceil(products.total / limitNumber);
 
-    res.status(200).json(products);
+    res.status(200).json({
+      products: products.products,
+      total: products.total,
+      totalPages,
+      currentPage: pageNumber
+    });
   } catch (error) {
     console.error('Error en getProduct:', error);
     res.status(500).json({ error: error.message });

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const Search = ({ onSearch }) => {
-  // Estado local para input
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
@@ -10,7 +9,7 @@ const Search = ({ onSearch }) => {
         onSearch(inputValue);
         setInputValue("");
       }
-    }, 300);
+    }, 1000);
 
     return () => clearTimeout(handler);
   }, [inputValue, onSearch]);
@@ -19,9 +18,12 @@ const Search = ({ onSearch }) => {
     setInputValue(e.target.value);
   };
 
-  
   return (
+    
     <div>
+      <button onClick={() => onSearch(inputValue)}>
+        Buscar      
+      </button>
       <input
         type="text"
         placeholder="Buscar productos..."
