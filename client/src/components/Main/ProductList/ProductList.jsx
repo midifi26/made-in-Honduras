@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import SortButtons from './SortButtons'
 import ProductItem from './ProductItem'
 import Search from './Search'
+import Pagination from '../Pagination'
 
 
 const ProductList = () => {
@@ -13,31 +14,33 @@ const ProductList = () => {
         field:"",
         direction : "asc"
     })
-      const getQueryParams = (searchTerm) => {
+  const [page, setPage] = useState(2)
+  const limit = 10
+
+  const getQueryParams = (searchTerm) => {
     if (!searchTerm) return '';
 
     if (/^\d+$/.test(searchTerm)) {
       return `price=${encodeURIComponent(searchTerm)}`;
     }
-
-    // Por defecto, búsqueda por nombre
     return `name=${encodeURIComponent(searchTerm)}`;
   };
+
     const queryParams = getQueryParams(search);
+
       useEffect(() => {
         const allProduct = async() => {
             try {
-                const resp = await fetch(`http://localhost:3000/api/product?${queryParams}&sortField=${order.field}&sortOrder=${order.direction}`);
+                const resp = await fetch(`http://localhost:3000/api/product?${queryParams}&sortField=${order.field}&sortOrder=${order.direction}&page=${page}&limit=${limit}`);
                 const data = await resp.json();
-                //setProducts(data);
-                setProducts(Array.isArray(data) ? data : []);
-
+                setProducts(Array.isArray(data.products) ? data.products : []);
+                window.scrollTo(0, 0);
             } catch (error) {
               console.error(error);
             }
         };
         allProduct();
-      },[search,order])
+      },[search,order, page])
     
     const orderBy = (field)=>{
         setOrder(lastOrder=> {
@@ -51,11 +54,22 @@ const ProductList = () => {
     
   return (
     <div>
+      
+        <h1>Caprichito Catracho</h1>
         <Search onSearch={setSearch}/>
         <SortButtons order={orderBy} />
-            {products.map(product => (
+        {products.length === 0 ? (
+          <>
+      <p>No se encontró el producto</p>
+      <img src='https://www.beta.crystalcloud.com.mx/images/no-results.png' />
+      </>
+    ) : (
+      products.map(product => (
         <ProductItem key={uuidv4()} product={product} />
-      ))}
+      ))
+    )}
+
+        <Pagination page={page} setPage={setPage} hasMore={products.length === limit} />
       
     </div>
   )

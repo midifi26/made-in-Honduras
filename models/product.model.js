@@ -9,19 +9,21 @@ const pool = require('../config/db_pgsql.js');
  * @returns {Promise<Array>} Lista de productos.
  */
 const getAllProducts = async (sortField = 'name', sortOrder = 'asc', offset = 0, limit = 10) => {
-  let client, result;
+  let client;
   try {
     client = await pool.connect();
     const queryText = queries.getAllProducts(sortField, sortOrder);
     const data = await client.query(queryText, [limit, offset]);
-    result = data.rows;
+    return {
+      products: data.rows,
+      total: Number(data.rows[0]?.total_count) || data.rowCount 
+    };
   } catch (err) {
     console.log(err);
     throw err;
   } finally {
     if (client) client.release();
   }
-  return result;
 };
 
 /**
@@ -30,19 +32,18 @@ const getAllProducts = async (sortField = 'name', sortOrder = 'asc', offset = 0,
  * @returns {Promise<Object|null>} Producto encontrado o null si no existe.
  */
 const getProductById = async (id) => {
-  let client, result;
+  let client;
   try {
     client = await pool.connect();
     //const queryText = 'SELECT * FROM products WHERE id_product = $1';
     const data = await client.query(queries.getProductById, [id]);
-    result = data.rows[0] || null;
+    return data.rows[0] || null;
   } catch (err) {
     console.error(err);
     throw err;
   } finally {
     if (client) client.release();
   }
-  return result;
 };
 
 /**
@@ -51,18 +52,20 @@ const getProductById = async (id) => {
  * @returns {Promise<Array>} Lista de productos coincidentes.
  */
 const getProductByName = async (name) => {
-  let client, result;
+  let client;
   try {
     client = await pool.connect();
     const data = await client.query(queries.getProductByName, [name]);
-    result = data.rows;
+    return {
+      products: data.rows,
+      total: Number(data.rows[0]?.total_count) || data.rowCount
+    };
   } catch (err) {
     console.error('Error en getProductsByName:', err);
     throw err;
   } finally {
     if (client) client.release();
   }
-  return result;
 };
 
 /**
@@ -73,19 +76,21 @@ const getProductByName = async (name) => {
  * @returns {Promise<Array>} Lista de productos.
  */
 const getProductByPrices = async (price, sortField = 'price', sortOrder = 'asc') => {
-  let client, result;
+  let client;
   try {
     client = await pool.connect();
     const queryText = queries.getProductByPrices(sortField, sortOrder);
     const data = await client.query(queryText, [price]);
-    result = data.rows;
+    return {
+      products: data.rows,
+      total: Number(data.rows[0]?.total_count) || data.rowCount
+    };
   } catch (err) {
     console.error(err);
     throw err;
   } finally {
     if (client) client.release();
   }
-  return result;
 };
 
 /**
@@ -96,19 +101,21 @@ const getProductByPrices = async (price, sortField = 'price', sortOrder = 'asc')
  * @returns {Promise<Array>} Lista de productos.
  */
 const getProductByProvider = async (name_provider, sortField = 'price', sortOrder = 'asc') => {
-  let client, result;
+  let client;
   try {
     client = await pool.connect();
     const queryText = queries.getProductByProvider(sortField, sortOrder);
     const data = await client.query(queryText, [name_provider]);
-    result = data.rows;
+    return {
+      products: data.rows,
+      total: Number(data.rows[0]?.total_count) || data.rowCount
+    };
   } catch (err) {
     console.error(err);
     throw err;
   } finally {
     if (client) client.release();
-  }
-  return result;
+  };
 };
 
 
@@ -118,21 +125,23 @@ const getProductByProvider = async (name_provider, sortField = 'price', sortOrde
  * @param {number} [limit=10] - Cantidad de productos por página (10 por defecto).
  * @returns {Promise<Array>} Lista de productos paginados.
  */
-const productPagination = async (page = 1, limit = 10) => {
-  let client, result;
+const productPagination = async (page = 2, limit = 10) => {
+  let client;
   const offset = (page - 1) * limit;
   try {
     client = await pool.connect();
     const queryText = queries.productPagination(offset, limit);
     const data = await client.query(queryText);
-    result = data.rows;
+    return {
+      products: data.rows,
+      total: Number(data.rows[0]?.total_count) || data.rowCount
+    };
   } catch (err) {
     console.error(err);
     throw err;
   } finally {
     if (client) client.release();
-  }
-  return result;
+  };
 };
 
 
