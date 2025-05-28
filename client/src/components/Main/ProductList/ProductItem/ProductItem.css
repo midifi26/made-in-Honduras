@@ -1,0 +1,116 @@
+body {
+  background: linear-gradient(to bottom right, #5382e6, #306bd9);
+  margin: 0;
+  padding: 0;
+}
+
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 100%;
+  width: 100%;
+  background-color: aquamarine;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+
+article {
+  /*justify-content:space-between;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items:center;
+  flex: 1 1 100%; 
+  max-width: 100%;
+  min-width: 300px;
+  width: 100%;
+  background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+  */
+display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+
+  width: 100%;     /* por defecto ocupa todo el ancho */
+  max-width: 100%;
+
+}
+
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+  display: flexbox;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+p {
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
+    color: #000;
+}
+
+
+
+.product-img{
+    display: flex;
+    align-items: center;
+    width: 20%;
+    height: auto;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+
+}
+
+
+article img {
+  width: 100%;
+  height: auto;
+  min-width: 80px;
+}
+
+@media screen and (min-width: 800px) {
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    flex-direction: row;
+  }
+
+  article {
+    float: left;
+    width: calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+    min-height: 250px;
+  }
+}
