@@ -29,7 +29,7 @@ const handleBack = () => {
     <>
     <h1>Caprichito Catracho</h1>
     <div>
-      <button onClick={handleBack}>Volver</button>
+      <button id="btn-details" onClick={handleBack}>Volver</button>
       {product ? (
         <div className="product-details">
           <h2>{product.name}</h2>
