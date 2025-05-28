@@ -5,6 +5,8 @@ import ProductItem from './ProductItem'
 import Search from './Search'
 import Pagination from '../Pagination'
 
+import './ProductList.css'
+
 
 const ProductList = () => {
     
