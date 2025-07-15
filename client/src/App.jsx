@@ -10,7 +10,7 @@ function App() {
    <Router>
 
       <Routes>
-        <h1>Caprichito Catracho</h1>
+        
         <Route path="/" element={<ProductList />} />
         <Route path="/products/:name" element={<ProductDetails />} />
       </Routes>

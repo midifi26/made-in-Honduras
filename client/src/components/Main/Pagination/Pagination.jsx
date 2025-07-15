@@ -1,4 +1,4 @@
-// Pagination.jsx
+
 import React from 'react';
 
 const Pagination = ({ page, setPage, hasMore }) => {
