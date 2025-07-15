@@ -61,6 +61,42 @@ INSERT INTO products(name, relevance, price, image, id_provider) VALUES
 ('Harina de Trigo Fortificada', 4.3, 3.40, 'https://walmarthn.vtexassets.com/arquivos/ids/271647/Harina-La-Rosa-De-Trigo-2-268-Kg-1-8961.jpg?v=638059485944630000', 1),
 ('Harina de Trigo', 4.7, 3.95, 'https://walmarthn.vtexassets.com/arquivos/ids/172014/Harinas-Gold-Star-Para-Baleadas-2270Gr-1-8825.jpg?v=637666371368230000', 1);
 
+
+UPDATE products
+SET image = CASE
+  WHEN id_product = 61 THEN 'https://m.media-amazon.com/images/I/51sGbnM2zrL._AC_UF1000,1000_QL80_.jpg'
+  WHEN id_product = 62 THEN 'https://assets.unileversolutions.com/v1/56692709.jpg'
+  WHEN id_product = 63 THEN 'https://static.wixstatic.com/media/6020a5_b6a7d4c3ac0c4aa68ab3e38bdc96d4bb~mv2.jpg/v1/fill/w_466,h_466,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/6020a5_b6a7d4c3ac0c4aa68ab3e38bdc96d4bb~mv2.jpg'
+  WHEN id_product = 64 THEN 'https://m.media-amazon.com/images/I/81dvRUxX1OL._AC_UF894,1000_QL80_.jpg'
+  WHEN id_product = 65 THEN 'https://www.despensamexicana.es/medium/Harina-de-ma%C3%ADz-blanco-1.8kg-Maseca-i457.jpg'
+  WHEN id_product = 66 THEN 'https://jotajotafoods.com/wp-content/uploads/2023/09/ZNE00016.jpg'
+  WHEN id_product = 67 THEN 'https://oksuper.es/4873-product_main_2x/foco-tamarindo-35cl.jpg'
+  WHEN id_product = 68 THEN 'https://jotajotafoods.com/wp-content/uploads/2022/06/ZNE00018.jpg'
+  WHEN id_product = 69 THEN 'https://cdn11.bigcommerce.com/s-iaghsg5nn9/images/stencil/500x659/products/1801/2126/ZUMO_DE_DURAZNO_NATURAS_33_CL__18395.1648035544.jpg?c=1'
+  WHEN id_product = 70 THEN 'https://www.trianglequalityfoods.com/images/productos/natura-s-pina-nectar-154321-154334.jpg'
+  WHEN id_product = 71 THEN 'https://cdn11.bigcommerce.com/s-iaghsg5nn9/images/stencil/1280x1280/products/1640/1918/PALITOS_CHILE_LIMN_DIANA_200_G__31721.1647787494.png?c=1'
+  WHEN id_product = 72 THEN 'https://dpapagayo.com/wp-content/uploads/2023/09/DIANA-MAIZ-CHINO-144G.jpeg'
+  WHEN id_product = 73 THEN 'https://superlatinoflores.com/wp-content/uploads/2024/06/IMG_4251.png'
+  WHEN id_product = 74 THEN 'https://latiendona.es/wp-content/uploads/2020/10/721-zambo-chile-limon-y-sal-155-g.jpg'
+  WHEN id_product = 75 THEN 'https://latiendona.es/producto/zambos-yuquitas-155-g'
+  WHEN id_product = 76 THEN 'https://aquies24-7.com/wp-content/uploads/2024/10/Ranchitas-Excitante-2020.png'
+  WHEN id_product = 77 THEN 'https://static.wixstatic.com/media/6020a5_a749555c1af44b4b88da23b6d6672a70~mv2.jpg/v1/fill/w_466,h_466,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/6020a5_a749555c1af44b4b88da23b6d6672a70~mv2.jpg'
+  WHEN id_product = 78 THEN 'https://www.cocinista.es/download/bancorecursos/Productos5/15304a-salsa-chile-habanero-60ml-tabasco.jpg'
+  WHEN id_product = 79 THEN 'https://lenca.es/wp-content/uploads/2023/10/lenca-001_0027_salsa-de-ajo-don-ramon.jpg'
+  WHEN id_product = 80 THEN 'https://assets.unileversolutions.com/v1/125086455.jpg'
+  WHEN id_product = 81 THEN 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU0o8HwQ6gohjN91107rikg3IftzPfNq67Bg&s'
+  WHEN id_product = 82 THEN 'https://m.media-amazon.com/images/I/81+nUCVfWRL.jpg'
+  WHEN id_product = 83 THEN 'https://americanmarket.es/wp-content/uploads/2023/09/200999.jpg'
+  WHEN id_product = 84 THEN 'https://cdn11.bigcommerce.com/s-iaghsg5nn9/images/stencil/1280x1280/products/2196/2628/ACHIOTE_MOLIDO_50G_VAPER.lat__31759.1695812688.jpg?c=1'
+  WHEN id_product = 85 THEN 'https://mercalatino.com/files/product_images/2024/09/02/IMG_0641.JPG'
+  WHEN id_product = 86 THEN 'https://cdn11.bigcommerce.com/s-iaghsg5nn9/images/stencil/1280x1280/products/1752/2073/ELOTITOS_CON_LIMON_DIANA_183_G__36828.1648027268.png?c=1'
+  WHEN id_product = 87 THEN 'https://static.wixstatic.com/media/6020a5_637164692e694540943e62783b879453~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg'
+  WHEN id_product = 88 THEN 'https://ik.imagekit.io/autoenlinea/imgjpg/tr:f-webp/537850_1.jpg'
+  WHEN id_product = 89 THEN 'https://lacolonia.vtexassets.com/arquivos/ids/224525-800-800?v=637378794188500000&width=800&height=800&aspect=true'
+  WHEN id_product = 90 THEN 'https://walmarthn.vtexassets.com/arquivos/ids/271647/Harina-La-Rosa-De-Trigo-2-268-Kg-1-8961.jpg?v=638059485944630000'
+END
+WHERE id_product BETWEEN 61 AND 90;
+
 INSERT INTO products(name, relevance, price, image, id_provider) VALUES
 ('Café Supremo', 4, 12.50, 'cafe_supremo.jpg', 2),
 ('Textil Algodón Premium', 3, 25.00, 'textil_algodon.jpg', 3),
