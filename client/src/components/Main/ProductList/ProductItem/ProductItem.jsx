@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./ProductItem.css"; 
 
 const ProductItem = ({product}) => {
+
   return <Link to={`/products/${product.name}`}>
+
     <article>
       <div className="product-img">
         <img src={product.image} />
