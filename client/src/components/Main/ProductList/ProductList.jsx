@@ -33,7 +33,7 @@ const ProductList = () => {
       useEffect(() => {
         const allProduct = async() => {
             try {
-                const resp = await fetch(`http://localhost:3000/api/product?${queryParams}&sortField=${order.field}&sortOrder=${order.direction}&page=${page}&limit=${limit}`);
+                const resp = await fetch(`https://made-in-honduras-2.onrender.com/api/product?${queryParams}&sortField=${order.field}&sortOrder=${order.direction}&page=${page}&limit=${limit}`);
                 const data = await resp.json();
                 setProducts(Array.isArray(data.products) ? data.products : []);
                 window.scrollTo(0, 0);
