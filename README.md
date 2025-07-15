@@ -124,4 +124,6 @@ Desarrollado con cariño por Michelle Diaz
 ## ⭐ Créditos
 
 Esta aplicación fue realizada como parte de una **prueba técnica de desarrollo web fullstack**.  
+
 Gracias por visitar **Caprichito Catracho** 🛍️✨
+
